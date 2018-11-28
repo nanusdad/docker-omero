@@ -2,8 +2,8 @@ FROM busybox
 MAINTAINER hadrien.mary@gmail.com
 
 # Add sysadmin user
-RUN echo 'sysadmin:x:1000:1000::/data:/bin/sh' >> /etc/passwd
-RUN echo 'sysadmin:x:1000:' >> /etc/group
+RUN groupadd -g 1000 sysadmin
+RUN useradd -g 1000 -u 1000 -d /data -s /bin/sh sysadmin
 
 RUN mkdir /data
 RUN chown sysadmin.sysadmin /data
